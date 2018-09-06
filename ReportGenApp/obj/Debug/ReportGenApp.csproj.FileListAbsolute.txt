@@ -1,0 +1,14 @@
+E:\POCs\ReportGeneratorUtils\ReportGenApp\bin\Debug\ReportGenApp.exe.config
+E:\POCs\ReportGeneratorUtils\ReportGenApp\bin\Debug\ReportGenApp.exe
+E:\POCs\ReportGeneratorUtils\ReportGenApp\bin\Debug\ReportGenApp.pdb
+E:\POCs\ReportGeneratorUtils\ReportGenApp\obj\Debug\ReportGenApp.csprojAssemblyReference.cache
+E:\POCs\ReportGeneratorUtils\ReportGenApp\obj\Debug\ReportGenApp.Form1.resources
+E:\POCs\ReportGeneratorUtils\ReportGenApp\obj\Debug\ReportGenApp.Properties.Resources.resources
+E:\POCs\ReportGeneratorUtils\ReportGenApp\obj\Debug\ReportGenApp.csproj.GenerateResource.cache
+E:\POCs\ReportGeneratorUtils\ReportGenApp\obj\Debug\ReportGenApp.csproj.CoreCompileInputs.cache
+E:\POCs\ReportGeneratorUtils\ReportGenApp\obj\Debug\ReportGenApp.exe
+E:\POCs\ReportGeneratorUtils\ReportGenApp\obj\Debug\ReportGenApp.pdb
+E:\POCs\ReportGeneratorUtils\ReportGenApp\bin\Debug\ReportGeneratorUtils.dll
+E:\POCs\ReportGeneratorUtils\ReportGenApp\bin\Debug\ReportGeneratorUtils.pdb
+E:\POCs\ReportGeneratorUtils\ReportGenApp\obj\Debug\ReportGenApp.csproj.CopyComplete
+E:\POCs\ReportGeneratorUtils\ReportGenApp\bin\Debug\HTMLReport.xslt

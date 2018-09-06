@@ -1,0 +1,10 @@
+E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\bin\Debug\netstandard2.0\ReportGeneratorUtils.deps.json
+E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\bin\Debug\netstandard2.0\ReportGeneratorUtils.dll
+E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\bin\Debug\netstandard2.0\ReportGeneratorUtils.pdb
+E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.csproj.CoreCompileInputs.cache
+E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.AssemblyInfoInputs.cache
+E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.AssemblyInfo.cs
+E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.dll
+E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.pdb
+E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\bin\Debug\netstandard2.0\Templates\HTMLReport.xslt
+E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.csprojAssemblyReference.cache

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Simple Report Generator Utils</PackageId>
+    <Authors>Satheesh Krishnasamy</Authors>
+    <Product>Simple Report Generator Utils</Product>
+    <Description>This library is written in .Net standard 2.0. It is simply convert any collection object into HTML report. This is useful for windows form applications, console, services which dont refer the web frameworks like System.Web.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ReportSaver.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\HTMLReport.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
