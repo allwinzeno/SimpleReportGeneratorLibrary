@@ -22,19 +22,27 @@ namespace ReportGenApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            IList<Employee> emps = new List<Employee>();
-            emps.Add(new Employee(1, "Satheesh"));
-            emps.Add(new Employee(2, "Martin Fowler"));
 
+            // Create the objects collection that are going to be presented in the report
+            IList<Employee> employeesCollection = new List<Employee>();
+            employeesCollection.Add(new Employee(1, "Satheesh"));
+            employeesCollection.Add(new Employee(2, "Martin Fowler"));
+
+            /* Create the report contents with the type of display.
+             * 
+             * Table: to display the collection as a HTML table in the report
+             * Label: to display the collection as a HTML label in the report
+             * Paragraph: to display the collection as a HTML paragraph in the report
+             * */
             var rptPartTable = new ReportPart(ContentType.Table, "All employees", "Footer info");
             var rptPartPara = new ReportPart(ContentType.Paragraph, "All employees", "Footer info");
             var rptPartLabel = new ReportPart(ContentType.Label, "All employees", "Footer info");
 
-            foreach (var emp in emps)
+            foreach (var employeeObject in employeesCollection)
             {
-                rptPartTable.Parts.Add(emp);
-                rptPartPara.Parts.Add(emp);
-                rptPartLabel.Parts.Add(emp);
+                rptPartTable.Parts.Add(employeeObject);
+                rptPartPara.Parts.Add(employeeObject);
+                rptPartLabel.Parts.Add(employeeObject);
             }
 
             IList<IReportPart> parts = new List<IReportPart>()
@@ -69,11 +77,6 @@ namespace ReportGenApp
 
 
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void openFolderInWindowsExplorer(string path, string args)
         {
             try
@@ -89,18 +92,38 @@ namespace ReportGenApp
             }
         }
     }
+    /// <summary>
+    /// Employee class
+    /// </summary>
     public class Employee
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Employee"/> class.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="name">The name.</param>
         public Employee(int id, string name)
         {
             this.EmployeeID = id;
             this.EmployeeName = name;
         }
 
+        /// <summary>
+        /// Gets or sets the employee identifier.
+        /// </summary>
+        /// <value>
+        /// The employee identifier.
+        /// </value>
         [ReportDisplay("Employee ID")]
         public int EmployeeID { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the employee.
+        /// </summary>
+        /// <value>
+        /// The name of the employee.
+        /// </value>
         [ReportDisplay("Employee Name")]
         public string EmployeeName { get; set; }
     }

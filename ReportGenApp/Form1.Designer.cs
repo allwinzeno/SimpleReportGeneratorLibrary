@@ -44,12 +44,12 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // txtXmlReport
             // 
             this.txtXmlReport.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtXmlReport.Location = new System.Drawing.Point(0, 0);
             this.txtXmlReport.Multiline = true;
-            this.txtXmlReport.Name = "textBox1";
+            this.txtXmlReport.Name = "txtXmlReport";
             this.txtXmlReport.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtXmlReport.Size = new System.Drawing.Size(776, 386);
             this.txtXmlReport.TabIndex = 1;
@@ -71,7 +71,6 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
