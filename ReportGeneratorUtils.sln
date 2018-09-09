@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportGeneratorUtils", "ReportGeneratorUtils\ReportGeneratorUtils.csproj", "{FDBD889A-BFB5-42BD-8938-1FE5D0140444}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportGeneratorUtils", "ReportGeneratorUtils\ReportGeneratorUtils.csproj", "{FDBD889A-BFB5-42BD-8938-1FE5D0140444}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportGenTestApp", "ReportGenApp\ReportGenTestApp.csproj", "{4E492190-60CD-4BDF-8C52-BDCC390D8BC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{7DCF5E76-0266-46EE-987D-61B476D0E694}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportGeneratorUtils.UnitTests", "ReportGeneratorUtils.UnitTests\ReportGeneratorUtils.UnitTests.csproj", "{CDBE9B85-C8A9-46B0-B67E-663C2293E251}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{4E492190-60CD-4BDF-8C52-BDCC390D8BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E492190-60CD-4BDF-8C52-BDCC390D8BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E492190-60CD-4BDF-8C52-BDCC390D8BC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDBE9B85-C8A9-46B0-B67E-663C2293E251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDBE9B85-C8A9-46B0-B67E-663C2293E251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDBE9B85-C8A9-46B0-B67E-663C2293E251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDBE9B85-C8A9-46B0-B67E-663C2293E251}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4E492190-60CD-4BDF-8C52-BDCC390D8BC9} = {7DCF5E76-0266-46EE-987D-61B476D0E694}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D6792C02-3BC5-4035-9953-5D0B541FF586}

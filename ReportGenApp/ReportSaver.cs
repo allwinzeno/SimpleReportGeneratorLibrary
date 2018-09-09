@@ -36,6 +36,13 @@ namespace ReportGenTestApp
             }
             else
             {
+
+                var directory = Directory.CreateDirectory(Path.GetDirectoryName(FileURL));
+                if (Directory.Exists(directory.FullName))
+                {
+                    Directory.CreateDirectory(directory.FullName);
+                }
+
                 File.WriteAllBytes(FileURL, bytesReportContent);
             }
 

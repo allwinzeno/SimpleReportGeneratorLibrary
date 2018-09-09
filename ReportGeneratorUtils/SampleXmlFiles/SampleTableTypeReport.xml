@@ -1,0 +1,18 @@
+<ReviewReport Title='This is my title'>
+	<Header>All employees:</Header>
+	<table title='All employees'>
+		<col name='Employee ID'></col>
+		<col name='Employee Name'></col>
+		<row>
+			<col>1</col>
+			<col>Satheesh</col>
+		</row>
+		<row>
+			<col>2</col>
+			<col>Martin Fowler</col>
+		</row>
+	</table>
+	<table footer='Footer info'></table>
+	<Footer>these are all our employees</Footer>
+	<Footer> Report generated on: 9/8/2018 5:16:20 PM</Footer>
+</ReviewReport>

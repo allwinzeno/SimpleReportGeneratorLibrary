@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ReviewReport Title='This is my title'>
+  <Header>All employees:</Header>
+  <label>All employees</label>
+  <label name='Employee ID'> 1</label>
+  <label name='Employee Name'> Satheesh</label>
+  <label name='Employee ID'> 2</label>
+  <label name='Employee Name'> Martin Fowler</label>
+  <label>Footer info</label>
+  <Footer>these are all our employees</Footer>
+  <Footer> Report generated on: 9/8/2018 11:29:33 PM</Footer>
+</ReviewReport>

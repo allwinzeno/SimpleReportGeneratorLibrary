@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs/ReportGeneratorUtils/v15/Server/sqlite3
+/ReportGenApp/bin
+/ReportGenApp/obj/Release
+/ReportGeneratorUtils.UnitTests/bin/Debug

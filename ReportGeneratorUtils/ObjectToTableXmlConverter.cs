@@ -56,7 +56,16 @@
 
                 if (table != null && table.Count() > 0)
                 {
-                    sb.Append($"<table title='{GetEncodedString(reportSection.GroupHeader)}'>");
+                    sb.Append($"<table title='{GetEncodedString(reportSection.GroupHeader)}' ");
+
+                    if (!string.IsNullOrWhiteSpace(reportSection.GroupFooter))
+                    {
+                        sb.Append($" footer='{GetEncodedString(reportSection.GroupFooter)}' >");
+                    }
+                    else
+                    {
+                        sb.Append(" >");
+                    }
 
                     renderTableHeader(sb, table.ElementAt(0));
                     foreach (var row in table)
@@ -64,12 +73,9 @@
                         renderTableRow(sb, row);
                     }
 
-                    sb.Append("</table>");
 
-                    if (!string.IsNullOrWhiteSpace(reportSection.GroupFooter))
-                    {
-                        sb.Append($"<table footer='{GetEncodedString(reportSection.GroupFooter)}'></table>");
-                    }
+
+                    sb.Append("</table>");
                 }
 
             }

@@ -71,6 +71,34 @@
                     border-top-right-radius:5px;
                     }
 
+                    tfoot tr{
+                    padding:15px;
+                    color:#fff;
+                    text-shadow:1px 1px 1px #568F23;
+                    border:1px solid #93CE37;
+                    border-bottom:3px solid #9ED929;
+                    background-color:#9DD929;
+                    background:-webkit-gradient(
+                    linear,
+                    left bottom,
+                    left top,
+                    color-stop(0.02, rgb(123,192,67)),
+                    color-stop(0.51, rgb(139,198,66)),
+                    color-stop(0.87, rgb(158,217,41))
+                    );
+                    background: -moz-linear-gradient(
+                    center bottom,
+                    rgb(123,192,67) 2%,
+                    rgb(139,198,66) 51%,
+                    rgb(158,217,41) 87%
+                    );
+                    -webkit-border-top-left-radius:5px;
+                    -webkit-border-top-right-radius:5px;
+                    -moz-border-radius:5px 5px 0px 0px;
+                    border-top-left-radius:5px;
+                    border-top-right-radius:5px;
+                    }
+
                     thead th:empty{
                     background:transparent;
                     border:none;
@@ -166,6 +194,7 @@
               </xsl:for-each>
             </tr>
           </thead>
+
           <xsl:for-each select="row" >
             <tr>
               <xsl:for-each select="col" >
@@ -176,6 +205,17 @@
             </tr>
           </xsl:for-each>
 
+          <xsl:if test="@footer">
+            <xsl:variable name="recordCount" select="count(col)"/>
+            <tfoot>
+              <tr>
+                <td colspan="{$recordCount}">
+                  <xsl:value-of select="@footer" disable-output-escaping="yes"/>
+                </td>
+              </tr>
+            </tfoot>
+          </xsl:if>
+
         </table>
       </div>
     </div>
@@ -183,6 +223,8 @@
 
 
   <xsl:template match="label">
+    <div style="clear:both;"/>
+    <div style="clear:both;"/>
     <div style="clear:both;">
       <!--<xsl:value-of select="." disable-output-escaping="yes"/>-->
       <span>
@@ -214,6 +256,8 @@
   </xsl:template >
 
   <xsl:template match="Footer">
+    <div style="clear:both;"/>
+    <div style="clear:both;"/>
     <div style="clear:both;height:10px;"></div>
     <div style="clear:both; ">
       <xsl:value-of select="." disable-output-escaping="yes"/>
