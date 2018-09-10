@@ -180,7 +180,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "restore": {
       "projectUniqueName": "E:\\POCs\\ReportGeneratorUtils\\GIT\\ReportGeneratorUtils\\ReportGeneratorUtils.csproj",
       "projectName": "Simple.Report.Generator.Utils",

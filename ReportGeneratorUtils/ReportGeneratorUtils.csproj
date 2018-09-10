@@ -18,6 +18,7 @@
     <NeutralLanguage />
     <PackageLicenseUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</PackageLicenseUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
