@@ -6,7 +6,7 @@ There is a example project done for you to understand the library. It's simple a
 
 
 ### Prerequisites
-This library is built usign .Net standard 2.0. The .Net framework complying with the .Net standard 2.0 is required.
+This library is built using .Net standard 2.0. The .Net framework complying with the .Net standard 2.0 is required.
 
 ## Authors
 Satheeshkumar Krishnsamy
