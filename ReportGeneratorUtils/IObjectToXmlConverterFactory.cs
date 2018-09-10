@@ -2,6 +2,6 @@
 {
     public interface IObjectToXmlConverterFactory
     {
-        IObjectToXmlConverter GetObjectToXmlConverter(ContentType targetContentType);
+        IObjectToXmlConverter GetObjectToXmlConverter(ReportSectionDisplayType targetContentType);
     }
 }

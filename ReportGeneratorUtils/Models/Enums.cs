@@ -3,7 +3,7 @@
     /// <summary>
     /// Report content type
     /// </summary>
-    public enum ContentType
+    public enum ReportSectionDisplayType
     {
         /// <summary>
         /// The content will be displayed as a hmtl table. 

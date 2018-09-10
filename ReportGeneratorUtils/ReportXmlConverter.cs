@@ -16,15 +16,15 @@
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"<ReviewReport Title='{ObjectToXmlConverterBase.GetEncodedString(reportInfo.Title)}'>");
-            sb.Append($"<Header>{ObjectToXmlConverterBase.GetEncodedString(reportInfo.Header)}</Header>");
+            sb.Append($"<ReviewReport Title='{ObjectToXmlConverterBase.GetHtmlEncodedString(reportInfo.Title)}'>");
+            sb.Append($"<Header>{ObjectToXmlConverterBase.GetHtmlEncodedString(reportInfo.Header)}</Header>");
 
             foreach (var bodyitem in reportInfo.ReportContent)
             {
                 factory.GetObjectToXmlConverter(bodyitem.ReportPartType).ConvertToXml(ref sb, bodyitem);
             }
 
-            sb.Append($"<Footer>{ObjectToXmlConverterBase.GetEncodedString(reportInfo.Footer)}</Footer>");
+            sb.Append($"<Footer>{ObjectToXmlConverterBase.GetHtmlEncodedString(reportInfo.Footer)}</Footer>");
 
             if (reportInfo.ShowDefaultFooterInfo)
             {

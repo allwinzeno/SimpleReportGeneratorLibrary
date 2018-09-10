@@ -22,7 +22,7 @@
                     if (attr != null)
                     {
                         var attrValue = attr.DisplayText;
-                        sb.Append($"<col name='{GetEncodedString(attrValue)}'></col>");
+                        sb.Append($"<col name='{GetHtmlEncodedString(attrValue)}'></col>");
                     }
                 }
             }
@@ -40,7 +40,7 @@
                     if (attr != null)
                     {
                         var PropValue = prop.GetValue(p, null);
-                        sb.Append($"<col>{GetEncodedString(Convert.ToString(PropValue))}</col>");
+                        sb.Append($"<col>{GetHtmlEncodedString(Convert.ToString(PropValue))}</col>");
                     }
                 }
                 sb.Append("</row>");
@@ -49,18 +49,18 @@
 
         private void renderTable(StringBuilder sb, IReportPart reportSection)
         {
-            if (reportSection.ReportPartType == ContentType.Table)
+            if (reportSection.ReportPartType == ReportSectionDisplayType.Table)
             {
 
                 IEnumerable<object> table = reportSection.Parts;
 
                 if (table != null && table.Count() > 0)
                 {
-                    sb.Append($"<table title='{GetEncodedString(reportSection.GroupHeader)}' ");
+                    sb.Append($"<table title='{GetHtmlEncodedString(reportSection.GroupHeader)}' ");
 
                     if (!string.IsNullOrWhiteSpace(reportSection.GroupFooter))
                     {
-                        sb.Append($" footer='{GetEncodedString(reportSection.GroupFooter)}' >");
+                        sb.Append($" footer='{GetHtmlEncodedString(reportSection.GroupFooter)}' >");
                     }
                     else
                     {

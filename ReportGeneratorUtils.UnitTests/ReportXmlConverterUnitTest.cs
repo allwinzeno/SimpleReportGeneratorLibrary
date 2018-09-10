@@ -41,7 +41,7 @@ namespace ReportGeneratorUtils.UnitTests
             employeesCollection.Add(new Employee(2, "Martin Fowler"));
 
 
-            var rptPartTable = new ReportPart(ContentType.Table, "All employees", "Footer info");
+            var rptPartTable = new ReportPart(ReportSectionDisplayType.Table, "All employees", "Footer info");
 
             foreach (var employeeObject in employeesCollection)
             {
@@ -93,7 +93,7 @@ namespace ReportGeneratorUtils.UnitTests
             employeesCollection.Add(new Employee(2, "Martin Fowler"));
 
             // form the report
-            var rptPartTable = new ReportPart(ContentType.Table, "All employees", "Footer info");
+            var rptPartTable = new ReportPart(ReportSectionDisplayType.Table, "All employees", "Footer info");
             foreach (var employeeObject in employeesCollection)
             {
                 rptPartTable.Parts.Add(employeeObject);
@@ -150,7 +150,7 @@ namespace ReportGeneratorUtils.UnitTests
             employeesCollection.Add(new Employee(2, "Martin Fowler"));
 
             // form the report
-            var rptPartParagraph = new ReportPart(ContentType.Paragraph, "All employees", "Footer info");
+            var rptPartParagraph = new ReportPart(ReportSectionDisplayType.Paragraph, "All employees", "Footer info");
             foreach (var employeeObject in employeesCollection)
             {
                 rptPartParagraph.Parts.Add(employeeObject);
@@ -197,7 +197,7 @@ namespace ReportGeneratorUtils.UnitTests
             employeesCollection.Add(new Employee(2, "Martin Fowler"));
 
             // form the report
-            var rptPartParagraph = new ReportPart(ContentType.Label, "All employees", "Footer info");
+            var rptPartParagraph = new ReportPart(ReportSectionDisplayType.Label, "All employees", "Footer info");
             foreach (var employeeObject in employeesCollection)
             {
                 rptPartParagraph.Parts.Add(employeeObject);

@@ -7,7 +7,7 @@
     {
         public abstract void ConvertToXml(ref StringBuilder sb, IReportPart reportContentItem);
 
-        internal static string GetEncodedString(string valueToEncode)
+        internal static string GetHtmlEncodedString(string valueToEncode)
         {
             return WebUtility.HtmlEncode(valueToEncode);
         }

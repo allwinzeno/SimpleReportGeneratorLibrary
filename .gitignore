@@ -6,3 +6,5 @@
 /ReportGenApp/bin
 /ReportGenApp/obj/Release
 /ReportGeneratorUtils.UnitTests/bin/Debug
+/ReportGeneratorUtils.UnitTests/obj/Debug
+/ReportGeneratorUtils.UnitTests/obj/Release

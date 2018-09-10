@@ -5,7 +5,7 @@
     public class ReportPart : IReportPart
     {
         public ReportPart(
-            ContentType reportPartType,
+            ReportSectionDisplayType reportPartType,
             string groupHeader,
             string groupFooter)
         {
@@ -17,6 +17,6 @@
         public string GroupHeader { get; }
         public IList<object> Parts { get; } = new List<object>();
         public string GroupFooter { get; }
-        public ContentType ReportPartType { get; }
+        public ReportSectionDisplayType ReportPartType { get; }
     }
 }

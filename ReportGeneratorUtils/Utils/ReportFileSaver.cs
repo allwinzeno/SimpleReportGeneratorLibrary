@@ -1,20 +1,8 @@
-﻿using System;
-using System.IO;
-using System.Text;
-
-namespace ReportGenTestApp
+﻿namespace ReportGeneratorUtils.Utils
 {
-    /// <summary>
-    /// Report saver
-    /// </summary>
-    public interface IReportSaver
-    {
-        /// <summary>
-        /// Saves the report.
-        /// </summary>
-        /// <param name="OverwriteIfFileExists">if set to <c>true</c> [overwrite if file exists].</param>
-        void SaveReport(string fileName, string ReportContent, bool OverwriteIfFileExists);
-    }
+    using System;
+    using System.IO;
+    using System.Text;
 
     /// <summary>
     /// Class has functions to save the report into a file
@@ -38,7 +26,7 @@ namespace ReportGenTestApp
             {
 
                 var directory = Directory.CreateDirectory(Path.GetDirectoryName(FileURL));
-                if (Directory.Exists(directory.FullName))
+                if (!Directory.Exists(directory.FullName))
                 {
                     Directory.CreateDirectory(directory.FullName);
                 }

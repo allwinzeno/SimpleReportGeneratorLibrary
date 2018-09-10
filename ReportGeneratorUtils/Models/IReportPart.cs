@@ -7,6 +7,6 @@
         string GroupHeader { get; }
         IList<object> Parts { get; }
         string GroupFooter { get; }
-        ContentType ReportPartType { get; }
+        ReportSectionDisplayType ReportPartType { get; }
     }
 }

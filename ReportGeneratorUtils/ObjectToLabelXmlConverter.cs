@@ -10,7 +10,7 @@
         {
             if (!string.IsNullOrWhiteSpace(reportContentItem.GroupHeader))
             {
-                sb.Append($"<label>{GetEncodedString(reportContentItem.GroupHeader)}</label>");
+                sb.Append($"<label>{GetHtmlEncodedString(reportContentItem.GroupHeader)}</label>");
             }
 
             foreach (var part in reportContentItem.Parts)
@@ -20,7 +20,7 @@
 
             if (!string.IsNullOrWhiteSpace(reportContentItem.GroupFooter))
             {
-                sb.Append($"<label>{GetEncodedString(reportContentItem.GroupFooter)}</label>");
+                sb.Append($"<label>{GetHtmlEncodedString(reportContentItem.GroupFooter)}</label>");
             }
         }
 
@@ -41,7 +41,7 @@
                         var propValue = prop.GetValue(bodyitem);
                         if (propValue != null)
                         {
-                            sb.Append($"<label name='{GetEncodedString(attr.DisplayText)}'> {GetEncodedString(Convert.ToString(propValue))}</label>");
+                            sb.Append($"<label name='{GetHtmlEncodedString(attr.DisplayText)}'> {GetHtmlEncodedString(Convert.ToString(propValue))}</label>");
                         }
                     }
                 }

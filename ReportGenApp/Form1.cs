@@ -1,5 +1,5 @@
 ﻿using ReportGeneratorUtils;
-using ReportGenTestApp;
+using ReportGeneratorUtils.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,10 +16,10 @@ namespace ReportGenApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            GenerateAndShowReport(ContentType.Table);
+            GenerateAndShowReport(ReportSectionDisplayType.Table);
         }
 
-        private void GenerateAndShowReport(ContentType reportPartType)
+        private void GenerateAndShowReport(ReportSectionDisplayType reportPartType)
         {
             // Create the objects collection that are going to be presented in the report
             IList<Employee> employeesCollection = new List<Employee>();
@@ -32,25 +32,20 @@ namespace ReportGenApp
              * Label: to display the collection as a HTML label in the report
              * Paragraph: to display the collection as a HTML paragraph in the report
              * */
-            var rptPartTable = GetReportPart(reportPartType, employeesCollection, "Employee list", "You are truely appreciated for all your effort in each day. Wish you all thebest !!!!!");
 
-            IList<IReportPart> parts = new List<IReportPart>()
-            {
-                rptPartTable
-            };
+            // Generate the report
+            IReportBuilder reportGenerator = new HtmlReportBuilder();
+            reportGenerator.AppendReportSection(
+                reportPartType,
+                employeesCollection,
+                "Employee list",
+                "You are truely appreciated for all your effort in each day.");
 
-            // form the report
-            IReport rpt = new Report("Employee list", "Below is the list of our employees.", "Copyright © MyCompany", parts);
+            var htmlReport = reportGenerator.Build(
+                "Employee list",
+                "Below is the list of our employees.",
+                "Copyright © MyCompany");
 
-            // create the factory that takes care of creating the xml converters
-            IObjectToXmlConverterFactory factory = new ObjectToXmlConverterFactory();
-
-            // get the xml representation of the report object
-            IReportXmlConverter objtoXmlConverter = new ReportXmlConverter(factory);
-            var result = objtoXmlConverter.ConvertToReportXml(rpt);
-
-            // either you can use the default xslt or your own xslt file
-            var htmlReport = XmlToHtmlTransformer.TransformToHTML(result /*, Path.Combine(Environment.CurrentDirectory, "HTMLReport.xslt")*/);
             txtXmlReport.Text = htmlReport;
 
             // save the file
@@ -59,22 +54,6 @@ namespace ReportGenApp
             saver.SaveReport(Path.Combine(Environment.CurrentDirectory, reportFilePath), htmlReport, true);
             openFolderInWindowsExplorer(reportFilePath, "");
         }
-
-        private IReportPart GetReportPart<T>(ContentType contentType, 
-            IList<T> contents,
-            string title,
-            string footerNote)
-        {
-            var reportPartInstance = new ReportPart(contentType, title, footerNote);
-
-            foreach (var reportContent in contents)
-            {
-                reportPartInstance.Parts.Add(reportContent);
-            }
-
-            return reportPartInstance;
-        }
-
 
         private void openFolderInWindowsExplorer(string path, string args)
         {
@@ -87,26 +66,31 @@ namespace ReportGenApp
             }
             catch (Exception excep)
             {
-
+                MessageBox.Show("There was an error in opening your report. " + excep.Message);
             }
         }
 
         private void btnParaReport_Click(object sender, EventArgs e)
         {
-            GenerateAndShowReport(ContentType.Paragraph);
+            GenerateAndShowReport(ReportSectionDisplayType.Paragraph);
         }
 
         private void btnShowLabelReport_Click(object sender, EventArgs e)
         {
-            GenerateAndShowReport(ContentType.Label);
+            GenerateAndShowReport(ReportSectionDisplayType.Label);
         }
 
         private void btnMultiPartReport_Click(object sender, EventArgs e)
         {
+            IObjectToXmlConverterFactory factory = new ObjectToXmlConverterFactory();
+            IReportBuilder reportGenerator = new HtmlReportBuilder(factory);
+            
             // Create the objects collection that are going to be presented in the report
-            IList<Employee> employeesCollection = new List<Employee>();
-            employeesCollection.Add(new Employee(1, "Satheesh Krishnasamy."));
-            employeesCollection.Add(new Employee(2, "Martin Fowler"));
+            IList<Blogger> bloggersCollection = new List<Blogger>();
+            bloggersCollection.Add(new Blogger(1, "Satheesh Krishnasamy."));
+            bloggersCollection.Add(new Blogger(2, "Martin Fowler"));
+
+
 
             /* Create the report contents with the type of display.
              * 
@@ -114,42 +98,34 @@ namespace ReportGenApp
              * Label: to display the collection as a HTML label in the report
              * Paragraph: to display the collection as a HTML paragraph in the report
              * */
-            var rptPartTable = GetReportPart(ContentType.Table, employeesCollection, "Bloggers list", "You are truely appreciated for all your effort in each day. Wish you all thebest !!!!!");
-            
-            
+            reportGenerator.AppendReportSection(
+                ReportSectionDisplayType.Table, 
+                bloggersCollection, 
+                "Bloggers list", 
+                "You are truely appreciated for all your effort in each day. Wish you all thebest !!!!!");
+
+
             // Create the objects collection that are going to be presented in the report
             IList<Article> articleCollection = new List<Article>();
             articleCollection.Add(new Article("How safe is the anti-forgery token?", "This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token."));
-            articleCollection.Add(new Article("How safe is the viewstate field?", "This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. "));
-            /* Create the report contents with the type of display.
-             * 
-             * Table: to display the collection as a HTML table in the report
-             * Label: to display the collection as a HTML label in the report
-             * Paragraph: to display the collection as a HTML paragraph in the report
-             * */
-            var rptPartPara = GetReportPart(ContentType.Paragraph, articleCollection, "Article published today", DateTime.Now.ToLongTimeString());
-            var rptPartLabel = GetReportPart(ContentType.Label, articleCollection, "Article published today", DateTime.Now.ToLongTimeString());
+            articleCollection.Add(new Article("H" +
+                "]ow safe is the viewstate field?", "This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. "));
 
 
-            IList<IReportPart> parts = new List<IReportPart>()
-            {
-                rptPartTable, rptPartPara, rptPartLabel
-            };
+            // Generate the report
 
-            // form the report
-            IReport rpt = new Report("My blog", "Articles published today.", "Copyright © MyCompany", parts);
 
-            // create the factory that takes care of creating the xml converters
-            IObjectToXmlConverterFactory factory = new ObjectToXmlConverterFactory();
+            reportGenerator.AppendReportSection(ReportSectionDisplayType.Paragraph,
+                articleCollection,
+                "Article published today",
+                DateTime.Now.ToLongTimeString());
 
-            // get the xml representation of the report object
-            IReportXmlConverter objtoXmlConverter = new ReportXmlConverter(factory);
-            var result = objtoXmlConverter.ConvertToReportXml(rpt);
-
-            // either you can use the default xslt or your own xslt file
-            var htmlReport = XmlToHtmlTransformer.TransformToHTML(result /*, Path.Combine(Environment.CurrentDirectory, "HTMLReport.xslt")*/);
-            txtXmlReport.Text = htmlReport;
-
+            reportGenerator.AppendReportSection(ReportSectionDisplayType.Label,
+                articleCollection,
+                "Article published today",
+                DateTime.Now.ToLongTimeString());
+            
+            var htmlReport = txtXmlReport.Text = reportGenerator.Build("My blog", "Articles published today.", "Copyright © MyCompany");
             // save the file
             var reportFilePath = $"Reports\\HTMLReport_{DateTime.Now.ToString("yyyyMMddhhmmss")}.html";
             IReportSaver saver = new ReportFileSaver();
@@ -193,6 +169,38 @@ namespace ReportGenApp
         public string EmployeeName { get; set; }
     }
 
+    public class Blogger
+    {
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Employee"/> class.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="name">The name.</param>
+        public Blogger(int id, string name)
+        {
+            this.EmployeeID = id;
+            this.EmployeeName = name;
+        }
+
+        /// <summary>
+        /// Gets or sets the employee identifier.
+        /// </summary>
+        /// <value>
+        /// The employee identifier.
+        /// </value>
+        [ReportDisplay("Blogger ID")]
+        public int EmployeeID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the employee.
+        /// </summary>
+        /// <vaue>
+        /// The name of the employee.
+        /// </value>
+        [ReportDisplay("Blogger Name")]
+        public string EmployeeName { get; set; }
+    }
 
     public class Article
     {
