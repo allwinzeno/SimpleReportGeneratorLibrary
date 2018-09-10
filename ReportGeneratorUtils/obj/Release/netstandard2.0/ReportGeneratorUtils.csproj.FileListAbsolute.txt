@@ -7,4 +7,5 @@ E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\obj\Release\netstandard2.0
 E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\obj\Release\netstandard2.0\ReportGeneratorUtils.AssemblyInfo.cs
 E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\obj\Release\netstandard2.0\ReportGeneratorUtils.dll
 E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\obj\Release\netstandard2.0\ReportGeneratorUtils.pdb
+E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\bin\Release\netstandard2.0\Schema\ReviewReport.xsd
 E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\obj\Release\netstandard2.0\ReportGeneratorUtils.csprojAssemblyReference.cache

@@ -14,11 +14,14 @@
     <PackageIconUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary/blob/master/Report%20icon%2016.jpg</PackageIconUrl>
     <RepositoryType>Library</RepositoryType>
     <PackageTags>Html-report, report</PackageTags>
-    <PackageReleaseNotes>Simple library to convert a collection of objects into HTML report</PackageReleaseNotes>
+    <PackageReleaseNotes>Simple library to convert a collection of objects into HTML report.
+
+1.0.2 Copied the missing template and schema  files</PackageReleaseNotes>
     <NeutralLanguage />
     <PackageLicenseUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</PackageLicenseUrl>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.2</Version>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,8 +33,23 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Templates\HTMLReport.xslt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates/*.*" copyToOutput="true">
+      <IncludeInPackage>true</IncludeInPackage>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Schema/*.*" copyToOutput="true">
+      <IncludeInPackage>true</IncludeInPackage>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Templates\HTMLReport.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

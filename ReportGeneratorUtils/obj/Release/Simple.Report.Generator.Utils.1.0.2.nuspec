@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
-    <id>SimpleReportGeneratorUtils</id>
-    <version>1.0.0</version>
+    <id>Simple.Report.Generator.Utils</id>
+    <version>1.0.2</version>
     <authors>Satheesh Krishnasamy</authors>
     <owners>Satheesh Krishnasamy</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,17 +10,25 @@
     <projectUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</projectUrl>
     <iconUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary/blob/master/Report icon 16.jpg</iconUrl>
     <description>This library is written in .Net standard 2.0. It simply converts any collection object into HTML report. This is useful for windows form applications, console, services which dont refer the web frameworks like System.Web. You can control the  report output by providing your custom XSLT file.</description>
-    <releaseNotes>Simple library to convert a collection of objects into HTML report</releaseNotes>
+    <releaseNotes>Simple library to convert a collection of objects into HTML report.
+
+1.0.2 Copied the missing template and schema  files</releaseNotes>
     <copyright>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</copyright>
     <tags>Html-report, report</tags>
     <repository type="Library" url="https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary" />
     <dependencies>
       <group targetFramework=".NETStandard2.0" />
     </dependencies>
+    <contentFiles>
+      <files include="any/netstandard2.0/Templates/HTMLReport.xslt" buildAction="Content" />
+      <files include="any/netstandard2.0/Schema/ReviewReport.xsd" buildAction="Content" />
+    </contentFiles>
   </metadata>
   <files>
     <file src="E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\bin\Release\netstandard2.0\ReportGeneratorUtils.dll" target="lib\netstandard2.0\ReportGeneratorUtils.dll" />
-    <file src="E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\bin\Release\netstandard2.0\*.*" target="content" />
-
+    <file src="E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\Templates\HTMLReport.xslt" target="content\Templates\HTMLReport.xslt" />
+    <file src="E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\Templates\HTMLReport.xslt" target="contentFiles\any\netstandard2.0\Templates\HTMLReport.xslt" />
+    <file src="E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\Schema\ReviewReport.xsd" target="content\Schema\ReviewReport.xsd" />
+    <file src="E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\Schema\ReviewReport.xsd" target="contentFiles\any\netstandard2.0\Schema\ReviewReport.xsd" />
   </files>
 </package>
