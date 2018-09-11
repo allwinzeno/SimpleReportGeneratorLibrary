@@ -11,7 +11,7 @@
     <PackageProjectUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</PackageProjectUrl>
     <ApplicationIcon />
     <Win32Resource />
-    <PackageIconUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary/blob/master/Report%20icon%2016.jpg</PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <RepositoryType>Library</RepositoryType>
     <PackageTags>Html-report, report</PackageTags>
     <PackageReleaseNotes>Simple library to convert a collection of objects into HTML report.
