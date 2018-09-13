@@ -183,7 +183,7 @@
     "version": "1.0.2",
     "restore": {
       "projectUniqueName": "E:\\POCs\\ReportGeneratorUtils\\GIT\\ReportGeneratorUtils\\ReportGeneratorUtils.csproj",
-      "projectName": "Simple.Report.Generator.Utils",
+      "projectName": "SimpleReportGeneratorUtils",
       "projectPath": "E:\\POCs\\ReportGeneratorUtils\\GIT\\ReportGeneratorUtils\\ReportGeneratorUtils.csproj",
       "packagesPath": "C:\\Users\\satheesh.krishnasamy\\.nuget\\packages\\",
       "outputPath": "E:\\POCs\\ReportGeneratorUtils\\GIT\\ReportGeneratorUtils\\obj\\",

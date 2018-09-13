@@ -8,8 +8,8 @@ E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\obj\Debug\netstandard2.0\Repor
 E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.pdb
 E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\bin\Debug\netstandard2.0\Templates\HTMLReport.xslt
 E:\POCs\ReportGeneratorUtils\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.csprojAssemblyReference.cache
-E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\bin\Debug\netstandard2.0\Schema\ReviewReport.xsd
 E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\bin\Debug\netstandard2.0\Templates\HTMLReport.xslt
+E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\bin\Debug\netstandard2.0\Schema\ReviewReport.xsd
 E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\bin\Debug\netstandard2.0\ReportGeneratorUtils.deps.json
 E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\bin\Debug\netstandard2.0\ReportGeneratorUtils.dll
 E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\bin\Debug\netstandard2.0\ReportGeneratorUtils.pdb
@@ -18,4 +18,3 @@ E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\obj\Debug\netstandard2.0\R
 E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.AssemblyInfo.cs
 E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.dll
 E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.pdb
-E:\POCs\ReportGeneratorUtils\GIT\ReportGeneratorUtils\obj\Debug\netstandard2.0\ReportGeneratorUtils.csprojAssemblyReference.cache
