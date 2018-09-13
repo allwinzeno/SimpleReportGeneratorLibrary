@@ -2,7 +2,7 @@
 This library helps you to convert the collection of .Net class objects into HTML reports. You can customize the report by providing your own XSLT templates.
 
 ## Getting Started
-There is a example project done for you to understand the library. It's simple and easy.
+There is an example project done for you to understand the library. It's simple and easy.
 
 
 ### Prerequisites
