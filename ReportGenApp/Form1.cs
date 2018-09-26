@@ -14,7 +14,7 @@ namespace ReportGenApp
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             GenerateAndShowReport(ReportSectionDisplayType.Table);
         }
@@ -22,9 +22,7 @@ namespace ReportGenApp
         private void GenerateAndShowReport(ReportSectionDisplayType reportPartType)
         {
             // Create the objects collection that are going to be presented in the report
-            IList<Employee> employeesCollection = new List<Employee>();
-            employeesCollection.Add(new Employee(1, "Satheesh Krishnasamy."));
-            employeesCollection.Add(new Employee(2, "Martin Fowler"));
+
 
             /* Create the report contents with the type of display.
              * 
@@ -37,7 +35,7 @@ namespace ReportGenApp
             IReportBuilder reportGenerator = new HtmlReportBuilder();
             reportGenerator.AppendReportSection(
                 reportPartType,
-                employeesCollection,
+                this.GetReportData(),
                 "Employee list",
                 "You are truely appreciated for all your effort in each day.");
 
@@ -46,16 +44,34 @@ namespace ReportGenApp
                 "Below is the list of our employees.",
                 "Copyright © MyCompany");
 
-            txtXmlReport.Text = htmlReport;
+            this.ShowReport(htmlReport);
+            this.SaveReport(htmlReport);
+        }
 
+        private IList<Employee> GetReportData()
+        {
+            return new List<Employee>
+            {
+                new Employee(1, "Satheesh Krishnasamy."),
+                new Employee(2, "Martin Fowler")
+            };
+        }
+
+        private void ShowReport(string reportContent)
+        {
+            txtXmlReport.Text = reportContent;
+        }
+
+        private void SaveReport(string reportContent)
+        {
             // save the file
             var reportFilePath = $"Reports\\HTMLReport_{DateTime.Now.ToString("yyyyMMddhhmmss")}.html";
             IReportSaver saver = new ReportFileSaver();
-            saver.SaveReport(Path.Combine(Environment.CurrentDirectory, reportFilePath), htmlReport, true);
-            openFolderInWindowsExplorer(reportFilePath, "");
+            saver.SaveReport(Path.Combine(Environment.CurrentDirectory, reportFilePath), reportContent, true);
+            OpenFolderInWindowsExplorer(reportFilePath, "");
         }
 
-        private void openFolderInWindowsExplorer(string path, string args)
+        private void OpenFolderInWindowsExplorer(string path, string args)
         {
             try
             {
@@ -70,25 +86,27 @@ namespace ReportGenApp
             }
         }
 
-        private void btnParaReport_Click(object sender, EventArgs e)
+        private void BtnParaReport_Click(object sender, EventArgs e)
         {
             GenerateAndShowReport(ReportSectionDisplayType.Paragraph);
         }
 
-        private void btnShowLabelReport_Click(object sender, EventArgs e)
+        private void BtnShowLabelReport_Click(object sender, EventArgs e)
         {
             GenerateAndShowReport(ReportSectionDisplayType.Label);
         }
 
-        private void btnMultiPartReport_Click(object sender, EventArgs e)
+        private void BtnMultiPartReport_Click(object sender, EventArgs e)
         {
             IObjectToXmlConverterFactory factory = new ObjectToXmlConverterFactory();
             IReportBuilder reportGenerator = new HtmlReportBuilder(factory);
-            
+
             // Create the objects collection that are going to be presented in the report
-            IList<Blogger> bloggersCollection = new List<Blogger>();
-            bloggersCollection.Add(new Blogger(1, "Satheesh Krishnasamy."));
-            bloggersCollection.Add(new Blogger(2, "Martin Fowler"));
+            IList<Blogger> bloggersCollection = new List<Blogger>
+            {
+                new Blogger(1, "Satheesh Krishnasamy."),
+                new Blogger(2, "Martin Fowler")
+            };
 
 
 
@@ -99,17 +117,18 @@ namespace ReportGenApp
              * Paragraph: to display the collection as a HTML paragraph in the report
              * */
             reportGenerator.AppendReportSection(
-                ReportSectionDisplayType.Table, 
-                bloggersCollection, 
-                "Bloggers list", 
+                ReportSectionDisplayType.Table,
+                bloggersCollection,
+                "Bloggers list",
                 "You are truely appreciated for all your effort in each day. Wish you all thebest !!!!!");
 
 
             // Create the objects collection that are going to be presented in the report
-            IList<Article> articleCollection = new List<Article>();
-            articleCollection.Add(new Article("How safe is the anti-forgery token?", "This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token."));
-            articleCollection.Add(new Article("H" +
-                "]ow safe is the viewstate field?", "This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. "));
+            IList<Article> articleCollection = new List<Article>
+            {
+                new Article("How safe is the anti-forgery token?", "This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token.This is a wonderful article about the anit-forgery token."),
+                new Article("How safe is the viewstate field?", "This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. This is a wonderful article about the viewstate field in asp.net web forms. ")
+            };
 
 
             // Generate the report
@@ -124,13 +143,13 @@ namespace ReportGenApp
                 articleCollection,
                 "Article published today",
                 DateTime.Now.ToLongTimeString());
-            
+
             var htmlReport = txtXmlReport.Text = reportGenerator.Build("My blog", "Articles published today.", "Copyright © MyCompany");
             // save the file
             var reportFilePath = $"Reports\\HTMLReport_{DateTime.Now.ToString("yyyyMMddhhmmss")}.html";
             IReportSaver saver = new ReportFileSaver();
             saver.SaveReport(Path.Combine(Environment.CurrentDirectory, reportFilePath), htmlReport, true);
-            openFolderInWindowsExplorer(reportFilePath, "");
+            OpenFolderInWindowsExplorer(reportFilePath, "");
         }
     }
     /// <summary>

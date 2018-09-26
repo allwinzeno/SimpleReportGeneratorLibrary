@@ -45,7 +45,7 @@
             this.btnShowTableReport.TabIndex = 0;
             this.btnShowTableReport.Text = "Show tabular report";
             this.btnShowTableReport.UseVisualStyleBackColor = true;
-            this.btnShowTableReport.Click += new System.EventHandler(this.button1_Click);
+            this.btnShowTableReport.Click += new System.EventHandler(this.Button1_Click);
             // 
             // txtXmlReport
             // 
@@ -74,7 +74,7 @@
             this.btnParaReport.TabIndex = 3;
             this.btnParaReport.Text = "Show paragraph report";
             this.btnParaReport.UseVisualStyleBackColor = true;
-            this.btnParaReport.Click += new System.EventHandler(this.btnParaReport_Click);
+            this.btnParaReport.Click += new System.EventHandler(this.BtnParaReport_Click);
             // 
             // btnShowLabelReport
             // 
@@ -84,7 +84,7 @@
             this.btnShowLabelReport.TabIndex = 4;
             this.btnShowLabelReport.Text = "Show Label report";
             this.btnShowLabelReport.UseVisualStyleBackColor = true;
-            this.btnShowLabelReport.Click += new System.EventHandler(this.btnShowLabelReport_Click);
+            this.btnShowLabelReport.Click += new System.EventHandler(this.BtnShowLabelReport_Click);
             // 
             // btnMultiPartReport
             // 
@@ -94,7 +94,7 @@
             this.btnMultiPartReport.TabIndex = 5;
             this.btnMultiPartReport.Text = "Show multi-part report";
             this.btnMultiPartReport.UseVisualStyleBackColor = true;
-            this.btnMultiPartReport.Click += new System.EventHandler(this.btnMultiPartReport_Click);
+            this.btnMultiPartReport.Click += new System.EventHandler(this.BtnMultiPartReport_Click);
             // 
             // Form1
             // 

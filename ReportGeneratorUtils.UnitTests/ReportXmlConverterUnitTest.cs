@@ -18,6 +18,23 @@ namespace ReportGeneratorUtils.UnitTests
         private string xsdFilePath;
         private string validationErrors;
 
+        private IList<Employee> GetReportTestDataCollection()
+        {
+            return new List<Employee>
+            {
+                new Employee(1, "Satheesh"),
+                new Employee(2, "Martin Fowler")
+            };
+        }
+
+        private void AddCollectionToReportPart(IList<Employee> employeesCollection, IReportPart reportPart)
+        {
+            foreach (var employeeObject in employeesCollection)
+            {
+                reportPart.Parts.Add(employeeObject);
+            }
+        }
+
         [TestInitialize]
         public void TestInit()
         {
@@ -36,17 +53,11 @@ namespace ReportGeneratorUtils.UnitTests
         public void GeneratedXMLReportShouldMatchTheSchemaTest()
         {
 
-            IList<Employee> employeesCollection = new List<Employee>();
-            employeesCollection.Add(new Employee(1, "Satheesh"));
-            employeesCollection.Add(new Employee(2, "Martin Fowler"));
-
+            var employeesCollection = this.GetReportTestDataCollection();
 
             var rptPartTable = new ReportPart(ReportSectionDisplayType.Table, "All employees", "Footer info");
 
-            foreach (var employeeObject in employeesCollection)
-            {
-                rptPartTable.Parts.Add(employeeObject);
-            }
+            AddCollectionToReportPart(employeesCollection, rptPartTable);
 
             IList<IReportPart> parts = new List<IReportPart>()
             {
@@ -67,7 +78,7 @@ namespace ReportGeneratorUtils.UnitTests
                 XmlReader schema = XmlReader.Create(this.xsdFilePath);
                 XmlDocument document = new XmlDocument();
                 document.LoadXml(result);
-                document.Schemas.Add("", schema);
+                document.Schemas.Add(string.Empty, schema);
                 ValidationEventHandler eventHandler = new ValidationEventHandler(ValidationEventHandler);
                 document.Validate(eventHandler);
             }
@@ -88,16 +99,11 @@ namespace ReportGeneratorUtils.UnitTests
             const int PROPERTY_COUNT = 2;
 
             // Prepare the test data
-            IList<Employee> employeesCollection = new List<Employee>();
-            employeesCollection.Add(new Employee(1, "Satheesh"));
-            employeesCollection.Add(new Employee(2, "Martin Fowler"));
+            var employeesCollection = this.GetReportTestDataCollection();
 
             // form the report
             var rptPartTable = new ReportPart(ReportSectionDisplayType.Table, "All employees", "Footer info");
-            foreach (var employeeObject in employeesCollection)
-            {
-                rptPartTable.Parts.Add(employeeObject);
-            }
+            AddCollectionToReportPart(employeesCollection, rptPartTable);            
             IList<IReportPart> parts = new List<IReportPart>()
             {
                 rptPartTable
@@ -145,16 +151,11 @@ namespace ReportGeneratorUtils.UnitTests
             const int PROPERTY_COUNT = 2;
 
             // Prepare the test data
-            IList<Employee> employeesCollection = new List<Employee>();
-            employeesCollection.Add(new Employee(1, "Satheesh"));
-            employeesCollection.Add(new Employee(2, "Martin Fowler"));
+            var employeesCollection = this.GetReportTestDataCollection();
 
             // form the report
             var rptPartParagraph = new ReportPart(ReportSectionDisplayType.Paragraph, "All employees", "Footer info");
-            foreach (var employeeObject in employeesCollection)
-            {
-                rptPartParagraph.Parts.Add(employeeObject);
-            }
+            AddCollectionToReportPart(employeesCollection, rptPartParagraph);
             IList<IReportPart> parts = new List<IReportPart>()
             {
                 rptPartParagraph
@@ -192,16 +193,11 @@ namespace ReportGeneratorUtils.UnitTests
             const int PROPERTY_COUNT = 2;
 
             // Prepare the test data
-            IList<Employee> employeesCollection = new List<Employee>();
-            employeesCollection.Add(new Employee(1, "Satheesh"));
-            employeesCollection.Add(new Employee(2, "Martin Fowler"));
+            var employeesCollection = this.GetReportTestDataCollection();
 
             // form the report
             var rptPartParagraph = new ReportPart(ReportSectionDisplayType.Label, "All employees", "Footer info");
-            foreach (var employeeObject in employeesCollection)
-            {
-                rptPartParagraph.Parts.Add(employeeObject);
-            }
+            AddCollectionToReportPart(employeesCollection, rptPartParagraph);
             IList<IReportPart> parts = new List<IReportPart>()
             {
                 rptPartParagraph
