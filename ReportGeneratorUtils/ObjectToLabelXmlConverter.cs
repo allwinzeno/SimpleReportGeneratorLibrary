@@ -3,11 +3,20 @@
     using System;
     using System.Linq;
     using System.Text;
+    using System.Threading;
 
     internal sealed class ObjectToLabelXmlConverter : ObjectToXmlConverterBase
     {
         public override void ConvertToXml(ref StringBuilder sb, IReportPart reportContentItem)
         {
+            this.ConvertToXml(ref sb, reportContentItem, CancellationToken.None);
+        }
+
+        public override void ConvertToXml(ref StringBuilder sb, IReportPart reportContentItem, CancellationToken cancellationToken)
+        {
+            if (cancellationToken.IsCancellationRequested)
+                return;
+
             if (!string.IsNullOrWhiteSpace(reportContentItem.GroupHeader))
             {
                 sb.Append($"<label>{GetHtmlEncodedString(reportContentItem.GroupHeader)}</label>");
@@ -15,8 +24,14 @@
 
             foreach (var part in reportContentItem.Parts)
             {
+                if (cancellationToken.IsCancellationRequested)
+                    return;
+
                 renderLabel(sb, part);
             }
+
+            if (cancellationToken.IsCancellationRequested)
+                return;
 
             if (!string.IsNullOrWhiteSpace(reportContentItem.GroupFooter))
             {

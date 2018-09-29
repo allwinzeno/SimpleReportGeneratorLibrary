@@ -3,10 +3,11 @@
     using System;
     using System.Linq;
     using System.Text;
+    using System.Threading;
 
     internal sealed class ObjectToParagraphXmlConverter : ObjectToXmlConverterBase
     {
-        public override void ConvertToXml(ref StringBuilder sb, IReportPart reportContentItem)
+        public override void ConvertToXml(ref StringBuilder sb, IReportPart reportContentItem, CancellationToken cancellationToken)
         {
             if (!string.IsNullOrWhiteSpace(reportContentItem.GroupHeader))
             {
@@ -15,7 +16,10 @@
 
             foreach (var part in reportContentItem.Parts)
             {
-                renderParagraph(sb, part);
+                if (cancellationToken.IsCancellationRequested)
+                    return;
+
+                renderParagraph(sb, part, cancellationToken);
             }
 
             if (!string.IsNullOrWhiteSpace(reportContentItem.GroupFooter))
@@ -24,13 +28,21 @@
             }
         }
 
-        private void renderParagraph(StringBuilder sb, object bodyitem)
+        public override void ConvertToXml(ref StringBuilder sb, IReportPart reportContentItem)
+        {
+            this.ConvertToXml(ref sb, reportContentItem, CancellationToken.None);
+        }
+
+        private void renderParagraph(StringBuilder sb, object bodyitem, CancellationToken cancellationToken)
         {
             if (bodyitem != null)
             {
                 Type t = bodyitem.GetType();
                 foreach (var prop in t.GetProperties())
                 {
+                    if (cancellationToken.IsCancellationRequested)
+                        return;
+
                     var attr = prop.GetCustomAttributes(typeof(ReportDisplayAttribute), true)
                         .Cast<ReportDisplayAttribute>()
                         .FirstOrDefault();

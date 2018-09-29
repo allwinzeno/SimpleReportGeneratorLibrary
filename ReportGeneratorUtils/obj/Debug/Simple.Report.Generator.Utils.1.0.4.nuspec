@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Simple.Report.Generator.Utils</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <authors>Satheesh Krishnasamy</authors>
     <owners>Satheesh Krishnasamy</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -11,11 +11,14 @@
     <description>This library is written in .Net standard 2.0. It simply converts any collection object into HTML report. This is useful for windows form applications, console, services which dont refer the web frameworks like System.Web. You can control the  report output by providing your custom XSLT file.</description>
     <releaseNotes>Simple library to convert a collection of objects into HTML report.
 
-      1.0.3
-      -- Signed the assembly with strong name
+-- 1.0.4
+- Added support CancellationToken. Now it possible for the main application to request cancellation of the report generation by passing the Cancelling Token. This is useful when you have to generate a time taking huge reports and want to cancel if the user wishes.
 
-      1.0.2
-      -- Copied the missing template and schema  files</releaseNotes>
+-- 1.0.3
+-- Signed the assembly with strong name
+
+-- 1.0.2
+-- Copied the missing template and schema  files</releaseNotes>
     <copyright>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</copyright>
     <tags>Html-report, report</tags>
     <repository type="Library" url="https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary" />

@@ -1,5 +1,11 @@
-﻿namespace ReportGeneratorUtils
+﻿using System.Threading;
+
+namespace ReportGeneratorUtils
 {
+    /// <summary>
+    /// HTML Report builder class
+    /// </summary>
+    /// <seealso cref="ReportGeneratorUtils.ReportBuilderBase" />
     public sealed class HtmlReportBuilder : ReportBuilderBase
     {
         private readonly IObjectToXmlConverterFactory factory;
@@ -32,21 +38,61 @@
         {
         }
 
+        /// <summary>
+        /// Builds the specified report title.
+        /// </summary>
+        /// <param name="reportTitle">The report title.</param>
+        /// <param name="reportSubTitle">The report sub title.</param>
+        /// <param name="reportFooter">The report footer.</param>
+        /// <param name="cancellationToken">
+        /// The cancellation token. The caller can cancel the report building operation using this.</param>
+        /// <returns>Report based on the given input in HTML format</returns>
+        public override string Build(
+           string reportTitle,
+           string reportSubTitle,
+           string reportFooter,
+           CancellationToken cancellationToken)
+        {
+
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return string.Empty;
+            }
+            // form the report
+            IReport rpt = new Report(reportTitle, reportSubTitle, reportFooter, this.ReportParts);
+
+
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return string.Empty;
+            }
+            // get the xml representation of the report object
+            IReportXmlConverter objtoXmlConverter = new ReportXmlConverter(this.factory);
+            var result = objtoXmlConverter.ConvertToReportXml(rpt, cancellationToken);
+
+            if (cancellationToken.IsCancellationRequested)
+            {
+                return string.Empty;
+            }
+
+            // either you can use the default xslt or your own xslt file
+            var htmlReport = XmlToHtmlTransformer.TransformToHTML(result, cancellationToken, this.xsltPath);
+            return htmlReport;
+        }
+
+        /// <summary>
+        /// Builds the specified report title.
+        /// </summary>
+        /// <param name="reportTitle">The report title.</param>
+        /// <param name="reportSubTitle">The report sub title.</param>
+        /// <param name="reportFooter">The report footer.</param>
+        /// <returns>Report based on the given input in HTML format</returns>
         public override string Build(
             string reportTitle,
             string reportSubTitle,
             string reportFooter)
         {
-            // form the report
-            IReport rpt = new Report(reportTitle, reportSubTitle, reportFooter, this.ReportParts);
-
-            // get the xml representation of the report object
-            IReportXmlConverter objtoXmlConverter = new ReportXmlConverter(this.factory);
-            var result = objtoXmlConverter.ConvertToReportXml(rpt);
-
-            // either you can use the default xslt or your own xslt file
-            var htmlReport = XmlToHtmlTransformer.TransformToHTML(result, this.xsltPath);
-            return htmlReport;
+            return this.Build(reportTitle, reportSubTitle, reportFooter, CancellationToken.None);
         }
     }
 }

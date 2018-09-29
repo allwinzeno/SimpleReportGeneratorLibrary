@@ -16,15 +16,19 @@
     <PackageTags>Html-report, report</PackageTags>
     <PackageReleaseNotes>Simple library to convert a collection of objects into HTML report.
 
-1.0.3
+-- 1.0.4
+- Added support CancellationToken. Now it possible for the main application to request cancellation of the report generation by passing the Cancelling Token. This is useful when you have to generate a time taking huge reports and want to cancel if the user wishes.
+
+-- 1.0.3
 -- Signed the assembly with strong name
 
-1.0.2 
--- Copied the missing template and schema  files</PackageReleaseNotes>
+-- 1.0.2
+-- Copied the missing template and schema  files
+</PackageReleaseNotes>
     <NeutralLanguage />
     <PackageLicenseUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</PackageLicenseUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>ReportGeneratorUtils.pfx</AssemblyOriginatorKeyFile>

@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReportGenApp.exe" size="17432">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReportGenApp.exe" size="22040">
       <assemblyIdentity name="ReportGenApp" version="1.0.0.0" publicKeyToken="D5C666EAE8F1DC4A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MyZseAqAPIhb7DGQQtMTgcnNLhFeoggalNt9xN2wKHI=</dsig:DigestValue>
+        <dsig:DigestValue>9ra1SOWQMfMgwMzwN16LZ3lQQD8VP1+6+Gd+ADg9TwE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReportGeneratorUtils.dll" size="15872">
-      <assemblyIdentity name="ReportGeneratorUtils" version="1.0.3.0" publicKeyToken="F7DAB012CB414E27" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReportGeneratorUtils.dll" size="17408">
+      <assemblyIdentity name="ReportGeneratorUtils" version="1.0.4.0" publicKeyToken="F7DAB012CB414E27" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>13PToPgZTLFNgDSHdgxVHSdIIgWSSNP2QevUw6G6TbE=</dsig:DigestValue>
+        <dsig:DigestValue>eMLdzsXGOzaPaZKvObzf/TRMauR+Zfv8h7P0Kw4zmHI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

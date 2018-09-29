@@ -3,6 +3,8 @@ using ReportGeneratorUtils.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ReportGenApp
@@ -55,6 +57,31 @@ namespace ReportGenApp
                 new Employee(1, "Satheesh Krishnasamy."),
                 new Employee(2, "Martin Fowler")
             };
+        }
+
+        private IList<Employee> GetReportLargeData(int requiredDataCount)
+        {
+            var employees = new List<Employee>
+            {
+                new Employee(1, "Satheesh Krishnasamy."),
+                new Employee(2, "Martin Fowler")
+            };
+
+            var targetEmployees = new List<Employee>();
+            var index = 0;
+            for (int i = 0; i < requiredDataCount; i++)
+            {
+                if (!currentToken.IsCancellationRequested)
+                {
+                    targetEmployees.Add(employees[index]);
+                    if (index == 0)
+                        index = 1;
+                    else
+                        index = 0;
+                }
+            }
+
+            return targetEmployees;
         }
 
         private void ShowReport(string reportContent)
@@ -120,7 +147,8 @@ namespace ReportGenApp
                 ReportSectionDisplayType.Table,
                 bloggersCollection,
                 "Bloggers list",
-                "You are truely appreciated for all your effort in each day. Wish you all thebest !!!!!");
+                "You are truely appreciated for all your effort in each day. Wish you all thebest !!!!!",
+                currentToken);
 
 
             // Create the objects collection that are going to be presented in the report
@@ -150,6 +178,86 @@ namespace ReportGenApp
             IReportSaver saver = new ReportFileSaver();
             saver.SaveReport(Path.Combine(Environment.CurrentDirectory, reportFilePath), htmlReport, true);
             OpenFolderInWindowsExplorer(reportFilePath, "");
+        }
+
+        private bool isLargeReportIsInProgress = false;
+        private CancellationTokenSource tokenSource = new CancellationTokenSource();
+        private CancellationToken currentToken = CancellationToken.None;
+        private async void BtnBigReport_ClickAsync(object sender, EventArgs e)
+        {
+            if (isLargeReportIsInProgress)
+            {
+                btnBigReport.Text = "Cancelling..";
+                tokenSource.Cancel();
+            }
+            else
+            {
+
+                if (!int.TryParse(txtLargeReportElementCount.Text, out int reportElementCount))
+                    reportElementCount = 10000;
+
+                txtLargeReportElementCount.Text = reportElementCount.ToString();
+                btnBigReport.Text = "Cancel Large Report";
+                isLargeReportIsInProgress = true;
+                tokenSource = new CancellationTokenSource();
+                currentToken = tokenSource.Token;
+
+                /* Callback when some progress is reported by the report generation task 
+                 * which will be running in another thread
+                 * */
+                IProgress<string> progress = new Progress<string>(htmlReport =>
+                {
+                    if (!currentToken.IsCancellationRequested)
+                        this.ShowReport(htmlReport);
+
+                    if (!currentToken.IsCancellationRequested)
+                        this.SaveReport(htmlReport);
+
+                    isLargeReportIsInProgress = false;
+                    btnBigReport.Text = "Large Report";
+                });
+
+                // Run the report generation task
+                await Task.Factory.StartNew(async () =>
+                 {
+                     var report = await this.GenerateLargeReportAsync(ReportSectionDisplayType.Table, reportElementCount);
+
+                     // report the progress
+                     progress.Report(report);
+                 });
+            }
+        }
+
+        private async Task<string> GenerateLargeReportAsync(ReportSectionDisplayType reportPartType, int count)
+        {
+            // Create the objects collection that are going to be presented in the report
+
+
+            /* Create the report contents with the type of display.
+             * 
+             * Table: to display the collection as a HTML table in the report
+             * Label: to display the collection as a HTML label in the report
+             * Paragraph: to display the collection as a HTML paragraph in the report
+             * */
+
+            // Demo purpose only. Wait for 10 seconds.
+            await Task.Delay(10000);
+
+            // Generate the report
+            IReportBuilder reportGenerator = new HtmlReportBuilder();
+            reportGenerator.AppendReportSection(
+                reportPartType,
+                this.GetReportLargeData(count),
+                "Employee list",
+                "You are truely appreciated for all your effort in each day.");
+
+            var htmlReport = reportGenerator.Build(
+                "Employee list",
+                "Below is the list of our employees.",
+                "Copyright © MyCompany",
+                currentToken);
+
+            return htmlReport;
         }
     }
     /// <summary>

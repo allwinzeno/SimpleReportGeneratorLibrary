@@ -34,6 +34,8 @@
             this.btnParaReport = new System.Windows.Forms.Button();
             this.btnShowLabelReport = new System.Windows.Forms.Button();
             this.btnMultiPartReport = new System.Windows.Forms.Button();
+            this.btnBigReport = new System.Windows.Forms.Button();
+            this.txtLargeReportElementCount = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,11 +98,31 @@
             this.btnMultiPartReport.UseVisualStyleBackColor = true;
             this.btnMultiPartReport.Click += new System.EventHandler(this.BtnMultiPartReport_Click);
             // 
+            // btnBigReport
+            // 
+            this.btnBigReport.Location = new System.Drawing.Point(538, 13);
+            this.btnBigReport.Name = "btnBigReport";
+            this.btnBigReport.Size = new System.Drawing.Size(123, 23);
+            this.btnBigReport.TabIndex = 6;
+            this.btnBigReport.Text = "Large Report";
+            this.btnBigReport.UseVisualStyleBackColor = true;
+            this.btnBigReport.Click += new System.EventHandler(this.BtnBigReport_ClickAsync);
+            // 
+            // txtLargeReportElementCount
+            // 
+            this.txtLargeReportElementCount.Location = new System.Drawing.Point(668, 14);
+            this.txtLargeReportElementCount.Name = "txtLargeReportElementCount";
+            this.txtLargeReportElementCount.Size = new System.Drawing.Size(100, 20);
+            this.txtLargeReportElementCount.TabIndex = 7;
+            this.txtLargeReportElementCount.Text = "100000";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtLargeReportElementCount);
+            this.Controls.Add(this.btnBigReport);
             this.Controls.Add(this.btnMultiPartReport);
             this.Controls.Add(this.btnShowLabelReport);
             this.Controls.Add(this.btnParaReport);
@@ -111,6 +133,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -122,6 +145,8 @@
         private System.Windows.Forms.Button btnParaReport;
         private System.Windows.Forms.Button btnShowLabelReport;
         private System.Windows.Forms.Button btnMultiPartReport;
+        private System.Windows.Forms.Button btnBigReport;
+        private System.Windows.Forms.TextBox txtLargeReportElementCount;
     }
 }
 

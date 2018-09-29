@@ -4,10 +4,14 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using System.Threading;
 
+    /// <summary>
+    /// Object to XML converter
+    /// </summary>
+    /// <seealso cref="ReportGeneratorUtils.ObjectToXmlConverterBase" />
     internal sealed class ObjectToTableXmlConverter : ObjectToXmlConverterBase
     {
-
         private void renderTableHeader(StringBuilder sb, object reportContentItem)
         {
             if (reportContentItem != null)
@@ -47,7 +51,7 @@
             }
         }
 
-        private void renderTable(StringBuilder sb, IReportPart reportSection)
+        private void renderTable(StringBuilder resultStringBuilder, IReportPart reportSection, CancellationToken cancellationToken)
         {
             if (reportSection.ReportPartType == ReportSectionDisplayType.Table)
             {
@@ -56,34 +60,55 @@
 
                 if (table != null && table.Count() > 0)
                 {
-                    sb.Append($"<table title='{GetHtmlEncodedString(reportSection.GroupHeader)}' ");
+                    resultStringBuilder.Append($"<table title='{GetHtmlEncodedString(reportSection.GroupHeader)}' ");
 
                     if (!string.IsNullOrWhiteSpace(reportSection.GroupFooter))
                     {
-                        sb.Append($" footer='{GetHtmlEncodedString(reportSection.GroupFooter)}' >");
+                        resultStringBuilder.Append($" footer='{GetHtmlEncodedString(reportSection.GroupFooter)}' >");
                     }
                     else
                     {
-                        sb.Append(" >");
+                        resultStringBuilder.Append(" >");
                     }
 
-                    renderTableHeader(sb, table.ElementAt(0));
+                    renderTableHeader(resultStringBuilder, table.ElementAt(0));
                     foreach (var row in table)
                     {
-                        renderTableRow(sb, row);
+                       
+                        if(cancellationToken.IsCancellationRequested)
+                        {
+                            resultStringBuilder.Clear();
+                            return;
+                        }
+
+                        renderTableRow(resultStringBuilder, row);
                     }
 
-
-
-                    sb.Append("</table>");
+                    resultStringBuilder.Append("</table>");
                 }
 
             }
         }
 
-        public override void ConvertToXml(ref StringBuilder sb, IReportPart reportContentItem)
+        /// <summary>
+        /// Converts to XML.
+        /// </summary>
+        /// <param name="resultStringBuilder">The result string builder.</param>
+        /// <param name="reportContentItem">The report content item.</param>
+        public override void ConvertToXml(ref StringBuilder resultStringBuilder, IReportPart reportContentItem)
         {
-            this.renderTable(sb, reportContentItem);
+            this.ConvertToXml(ref resultStringBuilder, reportContentItem, CancellationToken.None);
+        }
+
+        /// <summary>
+        /// Converts to XML.
+        /// </summary>
+        /// <param name="resultStringBuilder">The result string builder.</param>
+        /// <param name="reportContentItem">The report content item.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        public override void ConvertToXml(ref StringBuilder resultStringBuilder, IReportPart reportContentItem, CancellationToken cancellationToken)
+        {
+            this.renderTable(resultStringBuilder, reportContentItem, cancellationToken);
         }
     }
 }
