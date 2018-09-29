@@ -8,7 +8,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</licenseUrl>
     <projectUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</projectUrl>
-    <description>This library is written in .Net standard 2.0. It simply converts any collection object into HTML report. This is useful for windows form applications, console, services which dont refer the web frameworks like System.Web. You can control the  report output by providing your custom XSLT file.</description>
+    <description>This library is written in .Net standard 2.0. It simply converts any collection object into HTML report. This is useful for windows form applications, console, services which dont refer the web frameworks like System.Web. You can control the  report output by providing your custom XSLT file. Refer project URL for the sample application.</description>
     <releaseNotes>Simple library to convert a collection of objects into HTML report.
 
 -- 1.0.4
