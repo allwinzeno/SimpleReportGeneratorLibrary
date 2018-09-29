@@ -5,7 +5,7 @@
     <PackageId>Simple.Report.Generator.Utils</PackageId>
     <Authors>Satheesh Krishnasamy</Authors>
     <Product>Simple Report Generator Utils</Product>
-    <Description>This library is written in .Net standard 2.0. It simply converts any collection object into HTML report. This is useful for windows form applications, console, services which dont refer the web frameworks like System.Web. You can control the  report output by providing your custom XSLT file. Refer project URL for the sample application.</Description>
+    <Description>This library is written in .Net standard 2.0. It simply converts any collection object into HTML report. This is useful for windows form applications, console, services which dont refer the web frameworks like System.Web. You can control the  report output by providing your custom XSLT file.</Description>
     <RepositoryUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</RepositoryUrl>
     <Copyright>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</Copyright>
     <PackageProjectUrl>https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary</PackageProjectUrl>
