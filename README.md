@@ -8,6 +8,9 @@ There is an example project done for you to understand the library. It's simple 
 ### Prerequisites
 This library is built using .Net standard 2.0. The .Net framework complying with the .Net standard 2.0 is required.
 
+### Examples
+You can find the sample usage of this library at https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary/tree/master/ReportGenApp
+
 ## Authors
 Satheeshkumar Krishnsamy
 
