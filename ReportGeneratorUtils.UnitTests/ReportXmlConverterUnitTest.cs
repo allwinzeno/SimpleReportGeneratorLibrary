@@ -12,6 +12,9 @@ using System.Xml.Schema;
 
 namespace ReportGeneratorUtils.UnitTests
 {
+    /// <summary>
+    /// Unit test class for testing the ReportXmlConverter class method(s)
+    /// </summary>
     [TestClass]
     public class ReportXmlConverterUnitTest
     {
