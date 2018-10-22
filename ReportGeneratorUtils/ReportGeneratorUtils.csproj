@@ -58,6 +58,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Templates\HTMLReportNoScript.xslt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Templates\HTMLReportNoScript.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Templates\HTMLReport.xslt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

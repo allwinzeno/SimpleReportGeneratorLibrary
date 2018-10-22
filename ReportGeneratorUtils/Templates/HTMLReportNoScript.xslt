@@ -29,7 +29,6 @@
                     font-size:18 px;
                     width:95%;
                     border-radius: 15px;
-                    cursor:pointer;
                     }
 
                     table
@@ -135,40 +134,6 @@
         </style>
       </head>
       <body>
-        <xsl:if test="count(//table) !=  0">
-          <script language="javascript" type="text/javascript">
-            <xsl:text disable-output-escaping="yes" >
-                    <![CDATA[
-                    function toggle(element)
-                    {
-                        if(element)
-                        {
-                            var divToBeToggled = element.nextSibling;
-
-                            for(var i = 1;i < 10; i++)
-                            {
-                               if(divToBeToggled)
-                               {
-                                if(divToBeToggled.nodeType == 1)
-                                    break;
-                                else
-                                    divToBeToggled = divToBeToggled.nextSibling;
-                               }
-                             }
-
-                            if(divToBeToggled)
-                            {
-                                if(divToBeToggled.style.display != "none")
-                                    divToBeToggled.style.display = "none";
-                                else
-                                    divToBeToggled.style.display = "block";
-                            }
-                        }
-                    }
-                ]]>
-                </xsl:text>
-          </script>
-        </xsl:if>
         <center>
           <h1>
             <xsl:value-of select="ReviewReport/@Title" disable-output-escaping="yes"/>
@@ -182,7 +147,7 @@
   <xsl:template match="table">
     <div style="clear:both;"/>
     <div style="clear:both;">
-      <div style="clear:both;" class="Tableheader" onclick="toggle(this);">
+      <div style="clear:both;" class="Tableheader">
         <xsl:value-of select="@title" disable-output-escaping="yes"/>
       </div>
       <div style="clear:both;">

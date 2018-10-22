@@ -27,7 +27,7 @@
                 if (cancellationToken.IsCancellationRequested)
                     return;
 
-                renderLabel(sb, part);
+                RenderLabel(sb, part);
             }
 
             if (cancellationToken.IsCancellationRequested)
@@ -39,7 +39,7 @@
             }
         }
 
-        private void renderLabel(StringBuilder sb, object bodyitem)
+        private void RenderLabel(StringBuilder sb, object bodyitem)
         {
             if (bodyitem != null)
             {

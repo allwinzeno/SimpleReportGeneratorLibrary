@@ -135,8 +135,9 @@
         </style>
       </head>
       <body>
-        <script language="javascript" type="text/javascript">
-          <xsl:text disable-output-escaping="yes" >
+        <xsl:if test="count(//table) !=  0">
+          <script language="javascript" type="text/javascript">
+            <xsl:text disable-output-escaping="yes" >
                     <![CDATA[
                     function toggle(element)
                     {
@@ -166,7 +167,8 @@
                     }
                 ]]>
                 </xsl:text>
-        </script>
+          </script>
+        </xsl:if>
         <center>
           <h1>
             <xsl:value-of select="ReviewReport/@Title" disable-output-escaping="yes"/>

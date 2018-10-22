@@ -5,6 +5,11 @@
 /.vs/ReportGeneratorUtils/v15/Server/sqlite3
 /ReportGenApp/bin
 /ReportGenApp/obj/Release
+/ReportGenApp/obj/Debug
+/ReportGeneratorUtils/bin
+/ReportGeneratorUtils/obj
 /ReportGeneratorUtils.UnitTests/bin/Debug
 /ReportGeneratorUtils.UnitTests/obj/Debug
 /ReportGeneratorUtils.UnitTests/obj/Release
+*.suo
+*.vs
