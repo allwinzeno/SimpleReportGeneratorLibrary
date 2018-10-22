@@ -19,7 +19,7 @@
                 if (cancellationToken.IsCancellationRequested)
                     return;
 
-                renderParagraph(sb, part, cancellationToken);
+                RenderParagraph(sb, part, cancellationToken);
             }
 
             if (!string.IsNullOrWhiteSpace(reportContentItem.GroupFooter))
@@ -33,7 +33,7 @@
             this.ConvertToXml(ref sb, reportContentItem, CancellationToken.None);
         }
 
-        private void renderParagraph(StringBuilder sb, object bodyitem, CancellationToken cancellationToken)
+        private void RenderParagraph(StringBuilder sb, object bodyitem, CancellationToken cancellationToken)
         {
             if (bodyitem != null)
             {

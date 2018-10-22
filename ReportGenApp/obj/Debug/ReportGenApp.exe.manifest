@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReportGenApp.exe" size="22040">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReportGenApp.exe" size="22552">
       <assemblyIdentity name="ReportGenApp" version="1.0.0.0" publicKeyToken="D5C666EAE8F1DC4A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lCxGKguVNChCeogZ2vv7QdV3wfWxQRoUVgUMw4Yo8Oc=</dsig:DigestValue>
+        <dsig:DigestValue>2Gl+BCBY2JdW3++KXS/WxZiUbUQBAGjJGPF1h1DrrPg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gTLnKqiTktl0vwK8FB7Z8PCeKjzLHUAWSMk+fxtTJ94=</dsig:DigestValue>
+        <dsig:DigestValue>lEt4bDncrwTrwxCRHboAIHUHL9ea/hlKBviNNrM6KoE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

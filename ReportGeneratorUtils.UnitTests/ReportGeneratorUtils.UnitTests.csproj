@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Employee.cs" />
+    <Compile Include="HTMLReportBuilderUnitTestScriptTag.cs" />
     <Compile Include="HtmlReportBuilderUnitTest.cs" />
     <Compile Include="ReportXmlConverterUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -259,6 +259,28 @@ namespace ReportGenApp
 
             return htmlReport;
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DisposeResources();
+        }
+
+        private void DisposeResources()
+        {
+            if (this.tokenSource != null)
+            {
+                try
+                {
+                    this.tokenSource.Cancel();
+                }
+                catch { }
+                try
+                {
+                    this.tokenSource.Dispose();
+                }
+                catch { }
+            }
+        }
     }
     /// <summary>
     /// Employee class

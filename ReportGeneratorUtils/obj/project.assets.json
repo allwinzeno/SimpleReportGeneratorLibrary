@@ -182,11 +182,11 @@
   "project": {
     "version": "1.0.4",
     "restore": {
-      "projectUniqueName": "E:\\POCs\\ReportGeneratorUtils\\GIT\\ReportGeneratorUtils\\ReportGeneratorUtils.csproj",
+      "projectUniqueName": "E:\\POCs\\PullRequests\\SRG_PR1\\SimpleReportGenSecurityCheck\\ReportGeneratorUtils\\ReportGeneratorUtils.csproj",
       "projectName": "Simple.Report.Generator.Utils",
-      "projectPath": "E:\\POCs\\ReportGeneratorUtils\\GIT\\ReportGeneratorUtils\\ReportGeneratorUtils.csproj",
+      "projectPath": "E:\\POCs\\PullRequests\\SRG_PR1\\SimpleReportGenSecurityCheck\\ReportGeneratorUtils\\ReportGeneratorUtils.csproj",
       "packagesPath": "C:\\Users\\satheesh.krishnasamy\\.nuget\\packages\\",
-      "outputPath": "E:\\POCs\\ReportGeneratorUtils\\GIT\\ReportGeneratorUtils\\obj\\",
+      "outputPath": "E:\\POCs\\PullRequests\\SRG_PR1\\SimpleReportGenSecurityCheck\\ReportGeneratorUtils\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

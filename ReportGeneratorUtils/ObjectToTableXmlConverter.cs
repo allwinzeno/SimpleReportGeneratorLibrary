@@ -12,7 +12,7 @@
     /// <seealso cref="ReportGeneratorUtils.ObjectToXmlConverterBase" />
     internal sealed class ObjectToTableXmlConverter : ObjectToXmlConverterBase
     {
-        private void renderTableHeader(StringBuilder sb, object reportContentItem)
+        private void RenderTableHeader(StringBuilder sb, object reportContentItem)
         {
             if (reportContentItem != null)
             {
@@ -32,7 +32,7 @@
             }
         }
 
-        private void renderTableRow(StringBuilder sb, object p)
+        private void RenderTableRow(StringBuilder sb, object p)
         {
             if (p != null)
             {
@@ -51,7 +51,7 @@
             }
         }
 
-        private void renderTable(StringBuilder resultStringBuilder, IReportPart reportSection, CancellationToken cancellationToken)
+        private void RenderTable(StringBuilder resultStringBuilder, IReportPart reportSection, CancellationToken cancellationToken)
         {
             if (reportSection.ReportPartType == ReportSectionDisplayType.Table)
             {
@@ -71,7 +71,7 @@
                         resultStringBuilder.Append(" >");
                     }
 
-                    renderTableHeader(resultStringBuilder, table.ElementAt(0));
+                    RenderTableHeader(resultStringBuilder, table.ElementAt(0));
                     foreach (var row in table)
                     {
                        
@@ -81,7 +81,7 @@
                             return;
                         }
 
-                        renderTableRow(resultStringBuilder, row);
+                        RenderTableRow(resultStringBuilder, row);
                     }
 
                     resultStringBuilder.Append("</table>");
@@ -108,7 +108,7 @@
         /// <param name="cancellationToken">The cancellation token.</param>
         public override void ConvertToXml(ref StringBuilder resultStringBuilder, IReportPart reportContentItem, CancellationToken cancellationToken)
         {
-            this.renderTable(resultStringBuilder, reportContentItem, cancellationToken);
+            this.RenderTable(resultStringBuilder, reportContentItem, cancellationToken);
         }
     }
 }

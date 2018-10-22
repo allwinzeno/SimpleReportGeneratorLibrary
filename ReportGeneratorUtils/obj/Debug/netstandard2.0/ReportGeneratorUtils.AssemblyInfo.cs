@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Satheesh Krishnasamy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("https://github.com/satheesh-krishnasamy/SimpleReportGeneratorLibrary")]
-[assembly: System.Reflection.AssemblyDescriptionAttribute(@"This library is written in .Net standard 2.0. It simply converts any collection object into HTML report. This is useful for windows form applications, console, services which dont refer the web frameworks like System.Web. You can control the  report output by providing your custom XSLT file. Refer project URL for the sample application.")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute(@"This library is written in .Net standard 2.0. It simply converts any collection object into HTML report. This is useful for windows form applications, console, services which dont refer the web frameworks like System.Web. You can control the  report output by providing your custom XSLT file.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.4.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Simple Report Generator Utils")]

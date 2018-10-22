@@ -1,19 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Linq;
-using System.Xml.Schema;
 
 namespace ReportGeneratorUtils.UnitTests
 {
     [TestClass]
-    public class HtmlReportBuilderUnitTest
+    public partial class HtmlReportBuilderUnitTest
     {
         [TestMethod]
         public void Report_Should_Be_Generated_When_Cancellation_Is_Not_Requested()
@@ -21,7 +14,7 @@ namespace ReportGeneratorUtils.UnitTests
             CancellationTokenSource tokenSource = new CancellationTokenSource();
             CancellationToken currentToken = tokenSource.Token;
 
-            var reportGenerationTask = GenerateLargeReportAsync(ReportSectionDisplayType.Table,
+            var reportGenerationTask = GenerateReportWithAutoGenDataAsync(ReportSectionDisplayType.Table,
                 100000,
                 currentToken,
                 0);
@@ -37,7 +30,7 @@ namespace ReportGeneratorUtils.UnitTests
             CancellationTokenSource tokenSource = new CancellationTokenSource();
             CancellationToken currentToken = tokenSource.Token;
 
-            var reportGenerationTask = GenerateLargeReportAsync(ReportSectionDisplayType.Table,
+            var reportGenerationTask = GenerateReportWithAutoGenDataAsync(ReportSectionDisplayType.Table,
                 100000,
                 currentToken,
                 10000);
@@ -48,7 +41,7 @@ namespace ReportGeneratorUtils.UnitTests
         }
 
 
-        private async Task<string> GenerateLargeReportAsync(
+        private async Task<string> GenerateReportWithAutoGenDataAsync(
             ReportSectionDisplayType reportPartType,
             int count,
             CancellationToken cancellationToken,
@@ -58,17 +51,38 @@ namespace ReportGeneratorUtils.UnitTests
             await Task.Delay(delayToStart);
 
             // get the asked number of report data in the collection
-            var reportData = this.GetReportLargeData(count);
+            var reportData = this.GetReportData(count);
 
             // Generate the report
-            IReportBuilder reportGenerator = new HtmlReportBuilder();
-            reportGenerator.AppendReportSection(
-                reportPartType,
-                reportData,
-                "Employee list",
-                "You are truely appreciated for all your effort in each day.",
-                cancellationToken);
+            return GenerateReportUsingHtmlReportBuilder(reportPartType, cancellationToken, reportData);
+        }
 
+        private string GenerateReportUsingHtmlReportBuilder(
+            ReportSectionDisplayType reportPartType,
+            CancellationToken cancellationToken,
+            IList<Employee> reportData,
+            string xsltPath = null)
+        {
+
+            // Generate the report
+            IReportBuilder reportGenerator;
+
+            if (string.IsNullOrWhiteSpace(xsltPath))
+            {
+                reportGenerator = new HtmlReportBuilder();
+
+            }
+            else
+            {
+                reportGenerator = new HtmlReportBuilder(xsltPath);
+            }
+
+            reportGenerator.AppendReportSection(
+                    reportPartType,
+                    reportData,
+                    "Employee list",
+                    "You are truely appreciated for all your effort in each day.",
+                    cancellationToken);
             var htmlReport = reportGenerator.Build(
                 "Employee list",
                 "Below is the list of our employees.",
@@ -78,7 +92,7 @@ namespace ReportGeneratorUtils.UnitTests
             return htmlReport;
         }
 
-        private IList<Employee> GetReportLargeData(int requiredDataCount)
+        private IList<Employee> GetReportData(int requiredDataCount)
         {
             var targetEmployees = new List<Employee>();
             for (int i = 0; i < requiredDataCount; i++)
